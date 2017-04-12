@@ -13,6 +13,9 @@ class unitest(unittest.TestCase):
     def testSecondContinuousArithmetic(self):
         A = [1,2,3,4,5,6]
         self.assertEqual(Solution().numberOfArithmeticSlices(A),10);
+    def testArithmetic(self):
+        A = [1,2,3,5,6,8,9,10,11,13,15]
+        self.assertEqual(Solution().numberOfArithmeticSlices(A),5);
 
 class Solution():
     def numberOfArithmeticSlices(self, A):
@@ -24,6 +27,7 @@ class Solution():
                 continuous += 1
             else:
                 ans += self.dp(continuous)
+                continuous = 0
                 diff = A[x]-A[x-1]
         ans += self.dp(continuous)
         return ans
