@@ -25,18 +25,11 @@ class Solution():
         for x in range(1,len(A)):
             if diff is not None and (A[x]-A[x-1]) == diff:
                 continuous += 1
+                ans += continuous
             else:
-                ans += self.dp(continuous)
                 continuous = 0
                 diff = A[x]-A[x-1]
-        ans += self.dp(continuous)
         return ans
-    def dp(self,n):
-        if(n is 0):
-            return 0
-        if(n is 1):
-            return 1
-        return self.dp(n-1)*2 - self.dp(n-2) +1
 
 if __name__ == '__main__':
     unittest.main()
